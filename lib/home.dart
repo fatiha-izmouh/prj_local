@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:prj_localisation/pages/accueil.dart';
+import 'package:prj_localisation/pages/add.dart';
+import 'package:prj_localisation/pages/map.dart';
 import 'package:prj_localisation/pages/profile.dart';
 
 class HomePage extends StatefulWidget {
@@ -15,8 +17,8 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   final List<Widget> _pages = [
     Center(child: AccueilPage()),
-    Center(child: Text('Add Page')),
-    Center(child: Text('Map Page')),
+    Center(child: AddPage()),
+    Center(child: MapPage()),
     Center(child: ProfilePage()),
   ];
 

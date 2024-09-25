@@ -34,7 +34,7 @@ class _ProfilePageState extends State<ProfilePage> {
               // Profile name and email
               Text(
                 'Coding with T',
-                style: Theme.of(context).textTheme.headline5!.copyWith(
+                style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                   fontWeight: FontWeight.bold,
                   color: Colors.black87,
                 ),
@@ -42,7 +42,7 @@ class _ProfilePageState extends State<ProfilePage> {
               const SizedBox(height: 4),
               Text(
                 'superAdmin@codingwitht.com',
-                style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                   color: Colors.grey,
                 ),
               ),
@@ -67,7 +67,6 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
     );
   }
-
   ListTile _buildListTile(BuildContext context, String title, IconData icon, Widget page) {
     return ListTile(
       contentPadding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
