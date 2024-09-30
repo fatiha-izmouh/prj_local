@@ -18,15 +18,6 @@ class _AccueilPageState extends State<AccueilPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
-      appBar: AppBar(
-      title: Text('Categories'),
-      backgroundColor: Colors.transparent,
-      elevation: 0,
-      leading: IconButton(
-        icon: Icon(Icons.menu, color: Colors.black),
-        onPressed: () {},
-      ),
-    ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
@@ -64,6 +55,7 @@ class _AccueilPageState extends State<AccueilPage> {
 
   Widget _buildCategoryCard(String title, String percentage) {
     return Card(
+      color: Colors.white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       elevation: 2,
       child: Padding(
@@ -90,45 +82,50 @@ class _AccueilPageState extends State<AccueilPage> {
 
   // Widget for Donut Chart Section
   Widget _buildDonutChartSection() {
-    return Column(
-      children: [
-        Center(
-          child: Container(
-            height: 180,
-            width: 180,
-            child: PieChart(
-              PieChartData(
-                pieTouchData: PieTouchData(
-                  touchCallback: (FlTouchEvent event, pieTouchResponse) {
-                    if (!event.isInterestedForInteractions || pieTouchResponse == null || pieTouchResponse.touchedSection == null) {
-                      touchedIndex = -1;
-                    } else {
-                      touchedIndex = pieTouchResponse.touchedSection!.touchedSectionIndex;
-                    }
-                  },
+    return Card(
+      color: Colors.white,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      child: Column(
+        children: [
+          SizedBox(height: 20,),
+          Center(
+            child: Container(
+              height: 180,
+              width: 180,
+              child: PieChart(
+                PieChartData(
+                  pieTouchData: PieTouchData(
+                    touchCallback: (FlTouchEvent event, pieTouchResponse) {
+                      if (!event.isInterestedForInteractions || pieTouchResponse == null || pieTouchResponse.touchedSection == null) {
+                        touchedIndex = -1;
+                      } else {
+                        touchedIndex = pieTouchResponse.touchedSection!.touchedSectionIndex;
+                      }
+                    },
+                  ),
+                  sectionsSpace: 0,  // No space between the sections
+                  centerSpaceRadius: 40,  // Creates the donut effect
+                  sections: _buildPieChartSections(),  // Pie chart sections
                 ),
-                sectionsSpace: 0,  // No space between the sections
-                centerSpaceRadius: 40,  // Creates the donut effect
-                sections: _buildPieChartSections(),  // Pie chart sections
+                swapAnimationDuration: Duration(milliseconds: 800),  // Enables chart animation
+                swapAnimationCurve: Curves.easeOutExpo,  // Smooth animation curve
               ),
-              swapAnimationDuration: Duration(milliseconds: 800),  // Enables chart animation
-              swapAnimationCurve: Curves.easeOutExpo,  // Smooth animation curve
             ),
           ),
-        ),
-        SizedBox(height: 10),
-        Wrap(
-          alignment: WrapAlignment.center,
-          spacing: 10,
-          runSpacing: 10,
-          children: [
-            _buildChartLegend('Option A', Colors.blue, '6%'),
-            _buildChartLegend('Option B', Colors.orange, '10%'),
-            _buildChartLegend('Option C', Colors.yellow, '34%'),
-            _buildChartLegend('Option D', Colors.red, '50%'),
-          ],
-        ),
-      ],
+          SizedBox(height: 10),
+          Wrap(
+            alignment: WrapAlignment.center,
+            spacing: 10,
+            runSpacing: 10,
+            children: [
+              _buildChartLegend('Option A', Colors.blue, '6%'),
+              _buildChartLegend('Option B', Colors.orange, '10%'),
+              _buildChartLegend('Option C', Colors.yellow, '34%'),
+              _buildChartLegend('Option D', Colors.red, '50%'),
+            ],
+          ),
+        ],
+      ),
     );
   }
 
@@ -249,6 +246,7 @@ class _AccueilPageState extends State<AccueilPage> {
 
   Widget _buildMaterialCard(String materialName, String category, String area) {
     return Card(
+      color: Colors.white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       elevation: 2,
       child: Padding(

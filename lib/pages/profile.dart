@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:prj_localisation/auth/login.dart';
 
 import '../profile_list/about.dart';
 import '../profile_list/help.dart';
@@ -61,12 +62,33 @@ class _ProfilePageState extends State<ProfilePage> {
                   _buildListTile(context, 'About', Icons.info, AboutPage()),
                 ],
               ),
+              const SizedBox(height: 24), // Adjusted space for logout button
+              // Logout button
+              ListTile(
+                contentPadding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
+                leading: Icon(Icons.logout, color: Colors.red),
+                title: Text(
+                  'Logout',
+                  style: const TextStyle(fontWeight: FontWeight.w600, color: Colors.red),
+                ),
+                tileColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginPage()),
+                  );
+                },
+              ),
             ],
           ),
         ),
       ),
     );
   }
+
   ListTile _buildListTile(BuildContext context, String title, IconData icon, Widget page) {
     return ListTile(
       contentPadding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),

@@ -1,10 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:prj_localisation/pages/accueil.dart';
 import 'package:prj_localisation/pages/add.dart';
 import 'package:prj_localisation/pages/map.dart';
 import 'package:prj_localisation/pages/profile.dart';
+import 'custom_drawer.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -39,6 +39,13 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: _selectedIndex != 3
+          ? AppBar(
+        backgroundColor: Colors.grey[200],
+      )
+          : null,
+
+      drawer: _selectedIndex != 3 ? CustomDrawer() : null,
 
       body: PageView(
         controller: _pageController,
